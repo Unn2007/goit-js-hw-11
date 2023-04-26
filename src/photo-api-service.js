@@ -22,7 +22,6 @@ async  getPhotoCollection() {
   try {
     const response = await axios.get(`https://pixabay.com/api/?${searchParams}`);
     const data = await response.data;
-    this.page+=1;
     return data;
   } catch (error) {
     console.log(error);
@@ -34,4 +33,8 @@ async  getPhotoCollection() {
   resetPage() {
     this.page=1;
   }
+  pageIncrement() {
+    this.page+=1;
+  }
+
 }
