@@ -1,2 +1,53 @@
 @import './common';
 @import './example';
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+.search-form {
+    position: fixed;
+    top: -1px;
+    width: 100%;
+    
+    background-color: #2F303A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.gallery {
+    padding-top: 100px;
+    max-width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.photo-card>img{
+width: 240px;
+height: 200px;
+}
+.photo-card {
+    // width: 24%;
+     object-fit: fill;
+     border: solid 0.5px #2F303A;
+    
+    
+};
+.info {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    justify-content: center;
+    font-size: 14px;
+}
+.info-item{
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    gap: 1px;
+    align-items: center
+};

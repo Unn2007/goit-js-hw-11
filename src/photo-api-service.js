@@ -4,25 +4,29 @@ export default class photoApiService {
         this.query =""
         this.page=1
     };
+   
 async  getPhotoCollection() {
+  const query = this.query;
+  const page = this.page;
     const searchParams = new URLSearchParams({
   key:"35759118-aa5f76bc84c3135be08c1161d",
-  q:"",
+  q:query,
   image_type:"photo",
   orientation: "horizontal",
   safesearch: true,
   per_page:40,
-  page:2
+  page:page
   });
-  searchParams.q = this.query;
-  searchParams.page = this.page;
+  
+  
   try {
     const response = await axios.get(`https://pixabay.com/api/?${searchParams}`);
     const data = await response.data;
     this.page+=1;
     return data;
   } catch (error) {
-    console.log(error)
+    console.log(error);
+    return error;
   }
           
    
