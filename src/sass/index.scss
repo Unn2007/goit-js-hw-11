@@ -27,7 +27,7 @@ img {
     flex-wrap: wrap;
     justify-content: center;
 }
-.photo-card>img{
+.photo-card>a>img{
 width: 240px;
 height: 200px;
 }
@@ -43,12 +43,14 @@ height: 200px;
     flex-direction: row;
     gap: 5px;
     justify-content: center;
-    font-size: 14px;
+    font-size: 12px;
+    
 }
 .info-item{
     display: flex;
     flex-direction: column;
-    font-size: 14px;
+    font-size: 12px;
     gap: 1px;
     align-items: center
+    
 };

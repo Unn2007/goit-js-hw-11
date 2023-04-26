@@ -1,5 +1,7 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import PhotoApiService from "./photo-api-service.js";
+import SimpleLightbox from "simplelightbox";
+import "simplelightbox/dist/simple-lightbox.min.css";
 // import "./io.js"
 const refs = {
     searchForm:document.querySelector(".search-form"),
@@ -7,6 +9,10 @@ const refs = {
     sentinel: document.querySelector(".sentinel")
 
 };
+const instance = new SimpleLightbox(".gallery a", {
+  captionsData: "title",
+  
+});
 
 const optionsIntersection = {rootMargin:"300px"};
 const observer = new IntersectionObserver(onIntersection,optionsIntersection); 
@@ -25,6 +31,8 @@ function onSubmit(event) {
         };
         refs.divGallery.innerHTML=CreateCardMarkup(data.hits);
         photocollection.pageIncrement();
+        instance.refresh();
+        
         })
     .catch((error)=>{
         console.log(error);
@@ -41,6 +49,7 @@ function onIntersection(entires) {
         refs.divGallery.insertAdjacentHTML("beforeend", CreateCardMarkup(data.hits));
         
         photocollection.pageIncrement();
+        instance.refresh();
         })
         .catch((error)=>{
           console.log(error);
@@ -62,7 +71,7 @@ function CreateCardMarkup(collectionPhoto) {
   return markup = collectionPhoto.map(({webformatURL,largeImageURL,tags,likes,views,comments,downloads})=>{
 return `
 <div class="photo-card">
-<img src="${webformatURL}" alt="${tags}" loading="lazy" />
+<a href="${largeImageURL}"><img src="${webformatURL}" alt="" title="${tags}" loading="lazy" /></a>
 <div class="info">
   <p class="info-item">
     <b>Likes</b>
