@@ -48,6 +48,7 @@ function onSubmit(event) {
 
 function onIntersection(entires) {
   entires.forEach(entry => {
+    
     if (
       entry.isIntersecting &
       (photocollection.query !== '') &
@@ -56,6 +57,14 @@ function onIntersection(entires) {
       photocollection
         .getPhotoCollection()
         .then(data => {
+          if (data.hits.length === 0) {
+            
+            Notify.failure(
+              'We are sorry, but you have reached the end of search results.'
+            );
+            return;
+          }
+          
           Notify.success(`Hooray! We found ${data.totalHits} images.`);
           refs.divGallery.insertAdjacentHTML(
             'beforeend',
@@ -67,7 +76,6 @@ function onIntersection(entires) {
           smoothScroll();
         })
         .catch(error => {
-          console.log(error);
           Notify.failure(
             'We are sorry, but you have reached the end of search results.'
           );
