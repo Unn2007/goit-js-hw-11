@@ -66,7 +66,7 @@ function onIntersection(entires) {
 
 
 function CreateCardMarkup(collectionPhoto) {
-
+let markup="";
 
   return markup = collectionPhoto.map(({webformatURL,largeImageURL,tags,likes,views,comments,downloads})=>{
 return `
