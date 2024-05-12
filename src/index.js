@@ -73,6 +73,7 @@ function onIntersection(entires) {
 
           photocollection.pageIncrement();
           instance.refresh();
+          // console.log()
           smoothScroll();
         })
         .catch(error => {
